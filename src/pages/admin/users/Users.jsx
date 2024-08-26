@@ -11,6 +11,8 @@ import Loader from "../../../components/UI/Icons/Loader";
 import toastMsg from "../../../utils/DisplayToast";
 import roles from "../../../utils/roles";
 import store_url from "../../../utils/store-urls";
+import { Helmet } from "react-helmet";
+
 const menu = {
   ADD_USER: "add-user",
   VIEW_USER: "view-user",
@@ -184,6 +186,10 @@ const Users = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Add | View Users</title>
+        <meta name="description" content="Add or view users" />
+      </Helmet>
       <div className="relative w-full">
         <nav className="flex  top-0 left-0 w-full bg-white justify-around items-center ">
           <button

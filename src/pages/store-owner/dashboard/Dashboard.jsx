@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import AuthHOC from "../../../AuthHOC";
 import Loader from "../../../components/UI/Icons/Loader";
 import store_url from "../../../utils/store-urls";
+import { Helmet } from "react-helmet";
 const myStyles = {
   itemShapes: RoundedStar,
   activeFillColor: "#ffb700",
@@ -32,9 +33,10 @@ const StoreDashboard = () => {
   }, []);
   return (
     <>
-      {/* <Head>
-        <title>Store Dashboard</title>
-      </Head> */}
+      <Helmet>
+        <title>Dashboard</title>
+        <meta name="description" content="View your store details" />
+      </Helmet>
       <div className="min-h-[inherit] grid grid-cols-1 md:grid-cols-2 border  gap-5 p-7">
         {isLoading && (
           <div className="fixed top-0 left-0 bg-black/60 w-screen h-screen z-50 grid place-items-center">

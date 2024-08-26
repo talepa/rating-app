@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import AuthHOC from "../../../AuthHOC";
 import Loader from "../../../components/UI/Icons/Loader";
 import store_url from "../../../utils/store-urls";
+import { Helmet } from "react-helmet";
 
 const DashboardCard = ({ heading, number }) => {
   return (
@@ -40,6 +41,10 @@ const AdminDashboard = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Admin Dashboard</title>
+        <meta name="description" content="Admin Dashboard" />
+      </Helmet>
       <div className="min-h-[inherit] flex flex-col lg:flex-row justify-center items-center gap-7 p-7 text-center">
         {isLoading ? (
           <Loader color="black" size="3em" />

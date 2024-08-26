@@ -6,6 +6,7 @@ import Input from "../../../components/UI/FormComponents/Input/Input";
 import Loader from "../../../components/UI/Icons/Loader";
 import Popup from "./Popup";
 import store_url from "../../../utils/store-urls";
+import { Helmet } from "react-helmet";
 const myStyles = {
   itemShapes: RoundedStar,
   activeFillColor: "#ffb700",
@@ -63,6 +64,10 @@ const UserDashboard = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Dashboard</title>
+        <meta name="description" content="Browse through our list of stores" />
+      </Helmet>
       <div className="min-h-[inherit]">
         <div className=" p-5 flex justify-center items-center ">
           <Input
@@ -93,7 +98,7 @@ const UserDashboard = () => {
                   <div className="image">
                     <img
                       className="rounded-xl"
-                      src={"store3d.jpg"}
+                      src={"/store3d.jpg"}
                       alt="store image"
                       height={200}
                       width={300}

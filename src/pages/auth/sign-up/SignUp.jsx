@@ -10,6 +10,7 @@ import Input from "../../../components/UI/FormComponents/Input/Input";
 import FormButton from "../../../components/UI/FormComponents/FormButton/FormButton";
 import { useHistory } from "react-router-dom";
 import store_url from "../../../utils/store-urls";
+import { Helmet } from "react-helmet";
 function passwordValidation(value, setPasswordError, setIsValid) {
   if (value.length < 8) {
     setPasswordError("Password should have more than 8 characters");
@@ -133,6 +134,10 @@ const SignUp = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Sign Up</title>
+        <meta name="description" content="Register your Account" />
+      </Helmet>
       <div className="border min-h-[inherit] flex justify-center items-center">
         <FormPage>
           <FormMessage

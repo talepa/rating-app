@@ -12,6 +12,7 @@ import Input from "../../../components/UI/FormComponents/Input/Input";
 import FormButton from "../../../components/UI/FormComponents/FormButton/FormButton";
 import { userDataActions } from "../../../redux-store/userDataSlice";
 import store_url from "../../../utils/store-urls";
+import { Helmet } from "react-helmet";
 const SignIn = () => {
   const { user } = useSelector((state) => state.userData);
   const { name, role } = user;
@@ -94,6 +95,10 @@ const SignIn = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Sign In</title>
+        <meta name="description" content="Sign In to your Account" />
+      </Helmet>
       <div className="min-h-[inherit] flex justify-center items-center">
         <FormPage>
           <FormMessage

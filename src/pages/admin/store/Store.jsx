@@ -4,7 +4,7 @@ import AuthHOC from "../../../AuthHOC";
 import Loader from "../../../components/UI/Icons/Loader";
 import roles from "../../../utils/roles";
 import store_url from "../../../utils/store-urls";
-
+import { Helmet } from "react-helmet";
 const StoreDisplay = () => {
   const select = "border rounded-lg p-3";
   const select_container = "flex gap-3 items-center justify-between";
@@ -41,6 +41,10 @@ const StoreDisplay = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Stores List</title>
+        <meta name="description" content="Stores List" />
+      </Helmet>
       <div>
         <div className="filter p-4 md:h-20 border flex flex-col items-center gap-5 md:gap-0 md:flex-row md:justify-around md:items-center">
           <div className={`${select_container}`}>
