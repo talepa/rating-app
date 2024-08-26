@@ -42,15 +42,12 @@ function passwordValidation(value, setPasswordError, setIsValid) {
 
 const SignUp = () => {
   const history = useHistory();
-  const [formData, setFormData] =
-    useState <
-    FormData >
-    {
-      email: "",
-      password: "",
-      name: "",
-      address: "",
-    };
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    name: "",
+    address: "",
+  });
   const [isValid, setIsValid] = useState(false);
   const [emailerror, setEmailError] = useState("");
   const [nameError, setNameError] = useState("");
