@@ -12,7 +12,7 @@ import Input from "../../../components/UI/FormComponents/Input/Input";
 import FormButton from "../../../components/UI/FormComponents/FormButton/FormButton";
 import { userDataActions } from "../../../redux-store/userDataSlice";
 import store_url from "../../../utils/store-urls";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 const SignIn = () => {
   const { user } = useSelector((state) => state.userData);
   const { name, role } = user;

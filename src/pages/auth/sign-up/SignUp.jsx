@@ -10,7 +10,7 @@ import Input from "../../../components/UI/FormComponents/Input/Input";
 import FormButton from "../../../components/UI/FormComponents/FormButton/FormButton";
 import { useHistory } from "react-router-dom";
 import store_url from "../../../utils/store-urls";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 function passwordValidation(value, setPasswordError, setIsValid) {
   if (value.length < 8) {
     setPasswordError("Password should have more than 8 characters");

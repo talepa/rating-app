@@ -7,16 +7,19 @@ import Header from "./components/UI/Header/Header.jsx";
 import Body from "./components/UI/Body/Body.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { HelmetProvider } from "react-helmet-async";
 import store from "./redux-store/store.jsx";
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Provider store={store}>
       <ToastContainer />
       <StrictMode>
-        <Header />
-        <Body>
-          <App />
-        </Body>
+        <HelmetProvider>
+          <Header />
+          <Body>
+            <App />
+          </Body>
+        </HelmetProvider>
       </StrictMode>
     </Provider>
   </BrowserRouter>

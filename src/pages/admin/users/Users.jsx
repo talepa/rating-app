@@ -1,6 +1,6 @@
 import AuthHOC from "../../../AuthHOC";
 import { useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import AddUsers from "./AddUsers/AddUsers";
 import ViewUsers from "./ViewUsers/ViewUsers";
 

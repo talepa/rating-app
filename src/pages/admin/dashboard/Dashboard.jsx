@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import AuthHOC from "../../../AuthHOC";
 import store_url from "../../../utils/store-urls";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import Icons from "../../../Icons/Icons";
 import ICONTYPES from "../../../Icons/types";
 const DashboardCard = ({ heading, number }) => {

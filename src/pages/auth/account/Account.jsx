@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import store_url from "../../../utils/store-urls";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import Icons from "../../../Icons/Icons";
 import ICONTYPES from "../../../Icons/types";
 

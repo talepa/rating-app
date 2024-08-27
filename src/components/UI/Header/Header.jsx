@@ -70,6 +70,7 @@ const NavLinks = ({ className, setShowNav }) => {
   );
 };
 const Header = () => {
+  const pathname = useLocation().pathname;
   const [showNav, setShowNav] = useState(false);
   return (
     <header className="bg-white h-24 py-5 px-5 flex items-center justify-between w-full transition-[top] duration-500 ">
@@ -80,9 +81,11 @@ const Header = () => {
         key={"desktop"}
         className="hidden md:flex gap-8 text-lg font-bold *:p-2 *:rounded-md "
       />
-      <button className="md:hidden" onClick={() => setShowNav(true)}>
-        <Icons type={ICONTYPES.MENU} />
-      </button>
+      {!pathname.includes("sign") && (
+        <button className="md:hidden" onClick={() => setShowNav(true)}>
+          <Icons type={ICONTYPES.MENU} />
+        </button>
+      )}
       {showNav && (
         <NavLinks
           key={"mobile"}

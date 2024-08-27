@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import AuthHOC from "../../../AuthHOC";
 import roles from "../../../utils/roles";
 import store_url from "../../../utils/store-urls";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import Icons from "../../../Icons/Icons";
 import ICONTYPES from "../../../Icons/types";
 const StoreDisplay = () => {

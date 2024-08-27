@@ -1,11 +1,13 @@
 let base;
-let env = "local";
-switch (env) {
+switch (import.meta.env.VITE_USE_URL) {
   case "local":
     base = "http://localhost:3000";
+    break;
   case "deployed":
     base = "https://backend-store-rating-app-1.onrender.com";
+    break;
 }
+console.log(base);
 const url = (endpoint) => `${base}/${endpoint}`;
 
 const store_url = {

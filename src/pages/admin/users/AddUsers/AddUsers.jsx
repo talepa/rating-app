@@ -104,28 +104,34 @@ const AddUsers = () => {
     }
     const { email, password, name, address, role, store_name } = formData;
     if (isValid) {
-      const res = await axios.post(store_url["sign-up"], {
-        email,
-        password,
-        name,
-        address,
-        role,
-        store_name,
-        overall_rating: 0,
-      });
-      setFormData({
-        email: "",
-        password: "",
-        name: "",
-        address: "",
-        role: roles.ADMIN,
-        store_name: "",
-      });
-      const { message, data } = res.data;
-      if (message === "error") {
-        toastMsg("error", data);
-      } else {
-        toastMsg("success", "Account created Successfully !!");
+      try {
+        const res = await axios.post(store_url["sign-up"], {
+          email,
+          password,
+          name,
+          address,
+          role,
+          store_name,
+          overall_rating: 0,
+        });
+        console.log(store_url["sign-up"]);
+        console.log(res);
+        setFormData({
+          email: "",
+          password: "",
+          name: "",
+          address: "",
+          role: roles.ADMIN,
+          store_name: "",
+        });
+        const { message, data } = res.data;
+        if (message === "error") {
+          toastMsg("error", data);
+        } else {
+          toastMsg("success", "Account created Successfully !!");
+        }
+      } catch (error) {
+        console.log(error);
       }
     }
     for (let i = 0; i < inputs.length; i++) {

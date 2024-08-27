@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import AuthHOC from "../../../AuthHOC";
 import store_url from "../../../utils/store-urls";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import Icons from "../../../Icons/Icons";
 const myStyles = {
   itemShapes: RoundedStar,
