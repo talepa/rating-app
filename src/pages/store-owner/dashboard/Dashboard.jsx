@@ -3,9 +3,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import AuthHOC from "../../../AuthHOC";
-import Loader from "../../../components/UI/Icons/Loader";
 import store_url from "../../../utils/store-urls";
 import { Helmet } from "react-helmet";
+import Icons from "../../../Icons/Icons";
 const myStyles = {
   itemShapes: RoundedStar,
   activeFillColor: "#ffb700",
@@ -37,49 +37,55 @@ const StoreDashboard = () => {
         <title>Dashboard</title>
         <meta name="description" content="View your store details" />
       </Helmet>
-      <div className="min-h-[inherit] grid grid-cols-1 md:grid-cols-2 border  gap-5 p-7">
-        {isLoading && (
-          <div className="fixed top-0 left-0 bg-black/60 w-screen h-screen z-50 grid place-items-center">
-            <Loader color="white" size="3em" />
-          </div>
-        )}
-        <div className="p-5 shadow-xl rounded-lg text-center min-w-80 min-h-80 flex flex-col items-center justify-center">
-          <div className="text-3xl">Overall Rating</div>
-          <div>
-            <Rating
-              style={{ maxWidth: 150 }}
-              value={overallRating}
-              itemStyles={myStyles}
-              radius="small"
-              readOnly
-            />
-          </div>
+      {isLoading && (
+        <div className=" min-h-[inherit] grid place-items-center">
+          <Icons type={"loader"} color="black" size="3em" />
         </div>
-        <div className="p-5 shadow-xl rounded-lg text-center min-w-80 min-h-80">
-          <div className="text-3xl mb-5">User Ratings</div>
-          <div className="flex flex-col gap-5 ">
-            {usersList.map((user) => {
-              return (
-                <div
-                  key={user._id}
-                  className="flex flex-col justify-center items-center gap-1 border p-1 rounded-lg  "
-                >
-                  <div className="font-semibold"> {user.user_name}</div>
-                  <div>
-                    <Rating
-                      style={{ maxWidth: 150 }}
-                      value={user.rating}
-                      itemStyles={myStyles}
-                      radius="small"
-                      readOnly
-                    />
+      )}
+      {!isLoading && (
+        <div className="min-h-[inherit] grid grid-cols-1 md:grid-cols-2 gap-5 p-7">
+          <div className="p-5 shadow-xl rounded-lg bg-white flex flex-col items-center justify-center">
+            <div className=" text-3xl md:text-5xl font-bold">
+              Overall Rating
+            </div>
+            <div className="flex items-center justify-center mt-5">
+              <Rating
+                style={{ maxWidth: 150 }}
+                value={overallRating}
+                itemStyles={myStyles}
+                radius="small"
+                readOnly
+              />
+            </div>
+          </div>
+          <div className="p-5 shadow-xl rounded-lg bg-white">
+            <div className=" text-3xl text-center md:text-left md:text-5xl font-bold mb-5">
+              User Ratings
+            </div>
+            <div className="flex flex-col gap-5">
+              {usersList.map((user) => {
+                return (
+                  <div
+                    key={user._id}
+                    className="flex flex-col justify-center items-center gap-1 border p-1 rounded-lg bg-white shadow-md hover:scale-105 transition duration-300"
+                  >
+                    <div className="font-semibold"> {user.user_name}</div>
+                    <div className="flex items-center justify-center">
+                      <Rating
+                        style={{ maxWidth: 150 }}
+                        value={user.rating}
+                        itemStyles={myStyles}
+                        radius="small"
+                        readOnly
+                      />
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import store_url from "../../../utils/store-urls";
+import Icons from "../../../Icons/Icons";
+import ICONTYPES from "../../../Icons/types";
 const myStyles = {
   itemShapes: RoundedStar,
   activeFillColor: "#ffb700",
@@ -40,13 +42,15 @@ const Popup = ({ name, store_name, email, address, overall_rating, close }) => {
       <div className="bg-white p-5 w-full rounded-lg max-w-[500px] min-h-[500px]">
         <div className="header border-b text-xl flex justify-between items-center">
           <div>Store Details</div>
-          <button onClick={() => close()}>close</button>
+          <button onClick={() => close()}>
+            <Icons type={ICONTYPES.CLOSE} size="2em" color="red" />
+          </button>
         </div>
         <div className="body flex flex-col gap-3">
           <div className="">
             <img
-              className="object-cover h-36 rounded-lg my-2 object-center"
-              src={"store3d.jpg"}
+              className="object-cover h-36 w-full rounded-lg my-2 object-center"
+              src={"/store3d.jpg"}
               alt="store-image"
             />
           </div>

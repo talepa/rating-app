@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -24,15 +24,17 @@ const SignIn = () => {
     password: "",
   });
 
-  if (name) {
-    history.replace(
-      role === roles.ADMIN
-        ? "/admin/dashboard"
-        : role === roles.USER
-        ? "/user/dashboard"
-        : "/store-owner/dashboard"
-    );
-  }
+  useEffect(() => {
+    if (name) {
+      history.replace(
+        role === roles.ADMIN
+          ? "/admin/dashboard"
+          : role === roles.USER
+          ? "/user/dashboard"
+          : "/store-owner/dashboard"
+      );
+    }
+  }, []);
 
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");

@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import AuthHOC from "../../../AuthHOC";
-import Loader from "../../../components/UI/Icons/Loader";
 import roles from "../../../utils/roles";
 import store_url from "../../../utils/store-urls";
 import { Helmet } from "react-helmet";
+import Icons from "../../../Icons/Icons";
+import ICONTYPES from "../../../Icons/types";
 const StoreDisplay = () => {
   const select = "border rounded-lg p-3";
   const select_container = "flex gap-3 items-center justify-between";
@@ -74,12 +75,12 @@ const StoreDisplay = () => {
             </select>
           </div>
         </div>
-        {isLoading ? (
-          <div className="h-screen max-h-72 grid place-items-center">
-            <Loader size="3em" />
-          </div>
-        ) : (
-          <div className="overflow-auto">
+        <div className="overflow-auto h-[70vh] p-5 justify-center flex">
+          {isLoading ? (
+            <div className="h-screen max-h-72 grid place-items-center">
+              <Icons type={ICONTYPES.LOADER} size="5em" />
+            </div>
+          ) : (
             <table>
               <thead className="">
                 <tr>
@@ -125,8 +126,8 @@ const StoreDisplay = () => {
                   })}
               </tbody>
             </table>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </>
   );

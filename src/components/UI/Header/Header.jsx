@@ -1,10 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import roles from "../../../utils/roles";
 import { userDataActions } from "../../../redux-store/userDataSlice";
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-const Header = () => {
+import Icons from "../../../Icons/Icons";
+import ICONTYPES from "../../../Icons/types";
+const active = "bg-blue-600 text-white";
+const NavLinks = ({ className, setShowNav }) => {
   const location = useLocation();
   const pathname = location.pathname;
   const dispatch = useDispatch();
@@ -18,66 +21,75 @@ const Header = () => {
   const role = user.role;
 
   return (
-    <header className="bg-white h-14 py-2 px-5 flex items-center justify-between border-b w-full transition-[top] duration-500 ">
+    <nav className={`${className} `}>
+      <button
+        onClick={() => setShowNav(false)}
+        className="md:hidden absolute top-5 right-5"
+      >
+        <Icons type={ICONTYPES.CLOSE} />
+      </button>
+      {pathname != "/sign-in" && pathname != "/sign-up" && (
+        <NavLink
+          className={` ${pathname.includes("dashboard") ? active : ""} `}
+          to={
+            role == roles.ADMIN
+              ? "/admin/dashboard"
+              : role == roles.USER
+              ? "/user/dashboard"
+              : "/store-owner/dashboard"
+          }
+        >
+          Dashboard
+        </NavLink>
+      )}
+      {role === roles.ADMIN && (
+        <>
+          <NavLink
+            className={` ${pathname.includes("/admin/users") ? active : ""} `}
+            to="/admin/users"
+          >
+            Users
+          </NavLink>
+          <NavLink
+            className={` ${pathname.includes("/admin/store") ? active : ""} `}
+            to="/admin/store"
+          >
+            Store
+          </NavLink>
+        </>
+      )}
+      {pathname != "/sign-in" && pathname != "/sign-up" && (
+        <NavLink
+          className={` ${pathname.includes("/account") ? active : ""} `}
+          to={"/account"}
+        >
+          Account
+        </NavLink>
+      )}
+    </nav>
+  );
+};
+const Header = () => {
+  const [showNav, setShowNav] = useState(false);
+  return (
+    <header className="bg-white h-24 py-5 px-5 flex items-center justify-between w-full transition-[top] duration-500 ">
       <div className="logo">
-        <img src={"logo.svg"} alt="header-logo" width="150" height={"100"} />
+        <img src={"/logo.svg"} alt="header-logo" width="150" height="50" />
       </div>
-      <nav className="navigation flex gap-5">
-        {pathname != "/sign-in" && pathname != "/sign-up" && (
-          <NavLink
-            className={`border-b-2 ${
-              pathname.includes("dashboard")
-                ? "border-black"
-                : "border-transparent"
-            } `}
-            to={
-              role == roles.ADMIN
-                ? "/admin/dashboard"
-                : role == roles.USER
-                ? "/user/dashboard"
-                : "/store-owner/dashboard"
-            }
-          >
-            Dashboard
-          </NavLink>
-        )}
-        {role === roles.ADMIN && (
-          <>
-            <NavLink
-              className={`border-b-2 ${
-                pathname.includes("/admin/users")
-                  ? "border-black"
-                  : "border-transparent"
-              } `}
-              to="/admin/users"
-            >
-              Users
-            </NavLink>
-            <NavLink
-              className={`border-b-2 ${
-                pathname.includes("/admin/store")
-                  ? "border-black"
-                  : "border-transparent"
-              } `}
-              to="/admin/store"
-            >
-              Store
-            </NavLink>
-          </>
-        )}
-        {pathname != "/sign-in" && pathname != "/sign-up" && (
-          <NavLink
-            className={`border-b-2 ${
-              pathname.includes("/account")
-                ? "border-black"
-                : "border-transparent"
-            } `}
-            to={"/account"}
-          >
-            Account
-          </NavLink>
-        )}
-      </nav>
+      <NavLinks
+        key={"desktop"}
+        className="hidden md:flex gap-8 text-lg font-bold *:p-2 *:rounded-md "
+      />
+      <button className="md:hidden" onClick={() => setShowNav(true)}>
+        <Icons type={ICONTYPES.MENU} />
+      </button>
+      {showNav && (
+        <NavLinks
+          key={"mobile"}
+          setShowNav={setShowNav}
+          className="md:hidden fixed right-0 top-0 flex flex-col items-center justify-center bg-gray-50 w-80 h-screen z-[999] gap-5 text-lg font-bold *:p-2 *:rounded-md"
+        />
+      )}
     </header>
   );
 };
