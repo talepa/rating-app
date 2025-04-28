@@ -32,7 +32,7 @@ This project was done according to the requirements in the challenge given in th
 
 ## Backend
 
-Find backend code here: [Github](https://github.com/RajathRao2000/backend_store-rating-app)
+Find backend code here: [Github](https://github.com/talepa/rating-backend.git)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
